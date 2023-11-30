@@ -1,0 +1,293 @@
+:root {
+  --dark-blue: #0445a5;
+  --light-blue: #7fa2cf;
+  --yellow: #c01010;
+  --purple: #ad201b;
+
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Skranji", cursive;
+}
+
+body {
+  background-image: url("/super-trunfo-marvel-vs-dc/assets/marvelVSdc.png");
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+header {
+  color: var(--dark-blue);
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+header h1,
+header h2 {
+  text-shadow: 2px 2px 5px var(--yellow);
+}
+
+header .logo {
+  width: 15%;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: -15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  /* max-width: 120; */
+}
+
+.card {
+  flex: 2;
+  height: 70rem;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.face {
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  min-width: 45rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  position: absolute;
+  backface-visibility: hidden;
+  flex-direction: column;
+}
+
+#front {
+  transform: rotateY(180deg);
+  background-position: cover;
+  
+}
+
+#front.player,
+#front.computer {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+#front.player {
+  background-image: url("../assets/front-user-card.png");
+}
+
+#front.computer {
+  background-image: url("../assets/front-computer-card.png");
+  height: 98%;
+  margin-top: -2rem;
+}
+
+#front.player .name,
+#front.computer .name {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  /* position: absolute; */
+  text-align: center;
+  margin-top: 80px;
+  /* top: 11%; */
+  /* display: block; */
+}
+
+#front .image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 257px;
+  height: 280px;
+  /* display: inline-block; */
+  margin: 0;
+  margin-left: 105px;
+  margin-top: 2.2px;
+  /* position: absolute; */
+  /* top: 8rem;
+  left: 8.5rem; */
+  border-radius: 5%;
+}
+
+#front .attributes {
+  position: absolute;
+  top: 63%;
+  left: 120px;
+}
+
+#front .attributes.computer {
+  top: 65%;
+  left: 110px;
+}
+
+#front .attributes .attribute {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+#front .attributes .attribute:hover,
+#front .attributes .attribute.selected {
+  color: var(--purple);
+  box-shadow: 5px 5px 15px var(--purple);
+}
+
+#front .attributes .bar {
+  width: 100%;
+  height: 1rem;
+  border-radius: 2rem;
+  background-color: #feeb63;
+  margin-bottom: 0.5rem;
+}
+
+#front .attributes .bar .bar-fill {
+  width: 70%;
+  height: 1rem;
+
+  border-radius: 2rem;
+  background-color: var(--purple);
+}
+
+#front .attributes .attribute .icon {
+  width: 3rem;
+}
+
+#back.player,
+#back.computer {
+  background-size: cover;
+  height: 85%;
+}
+
+#back.player {
+  background-image: url("../assets/MARVEL-VS-DC-AZUL.webp");
+}
+
+#back.computer {
+  background-image: url("../assets/MARVEL-VS-DC-VERMELHO.webp");
+}
+
+.card .attributes .attribute .icon img {
+  width: 100%;
+}
+
+.card .attributes .attribute input[type="radio"] {
+  display: none;
+}
+
+.game-controls .control-container {
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+  border: var(--yellow) solid 3px;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 black;
+  z-index: 10;
+}
+
+.game-controls .control-container .score {
+  color: var(--light-blue);
+  font-size: 2.2rem;
+  margin: 0 0.5rem;
+}
+
+.game-controls .control-container.rest-cards {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+
+.game-controls .buttons-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.game-controls .buttons-container button {
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
+  border: var(--yellow) solid 3px;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 black;
+
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 2.2rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.game-controls .buttons-container button:disabled {
+  filter: brightness(0.5);
+  pointer-events: none;
+}
+
+.game-controls .buttons-container button:hover {
+  transform: scale(1.1);
+}
+
+.swal2-popup {
+  font-size: 2rem !important;
+}
+
+@media screen and (max-width: 1250px){
+  .container{
+    flex-direction: column;
+    overflow-y: scroll;
+    display: grid;
+    margin-top: 0;
+    max-height: 680px;
+    justify-content: center;
+      /* grid-template-columns: 1fr 3fr;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; */
+  }
+  .class #player{
+    height: 100%;
+  }
+  .game-controls{
+    margin: 0 auto;
+    margin-left: 20px;
+  }
+  h1{
+    font-size: 4rem;
+  }
+  h2{
+    font-size: 3rem;
+  }
+
+  header .logo{
+    height: 70px;
+    width: 100px;
+  }
+
+  .card{
+    --bs-card-bg:0;
+    --bs-card-border-color:0;
+  }
+}
